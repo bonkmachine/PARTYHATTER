@@ -92,7 +92,7 @@ label {
     .control-panel {
         border-bottom: 1px solid #ddd; /* Border at the bottom of control panel */
         border-right: none;
-        padding-top: 3rem; /* Add 3rem of padding to the top */
+        padding-top: 1rem; /* Add 3rem of padding to the top */
     }
 
     .canvas-container {
