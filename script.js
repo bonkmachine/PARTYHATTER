@@ -22,7 +22,7 @@ let isDragging = false;
 let dragStartX, dragStartY;
 
 // Overlay image URL
-const overlayImageUrl = 'https://github.com/bonkmachine/PARTYHATTER/blob/main/blue-phat.png?raw=true';
+const overlayImageUrl = 'https://i.ibb.co/zrTcXKZ/blue-phat.png';
 
 // Load base image when a file is selected
 baseImageUpload.addEventListener('change', function(e) {
