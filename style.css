@@ -59,7 +59,10 @@ label {
     .wrapper {
         flex-direction: column; /* Stack the boxes vertically */
     }
-
+    
+    .resizeControl {
+        width: 100%
+    }
     .control-panel, .canvas-container {
         margin-right: 0;
         margin-left: 0;
