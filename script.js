@@ -61,7 +61,7 @@ function loadImage(file, isBase) {
         img.onload = function() {
             if (isBase) {
                 baseImage = img;
-                scaleBaseImageToFitCanvas();
+                scaleBaseImageToFitCanvas(); // Adjust the size of the image to fit the canvas
                 drawImages();
             }
         }
@@ -85,17 +85,18 @@ function loadOverlayImage(url) {
 
 // Scale base image to fit the canvas while maintaining aspect ratio
 function scaleBaseImageToFitCanvas() {
-    let scale = Math.min(canvas.width / baseImage.width, canvas.height / baseImage.height);
+    // Calculate the scale factor to fit the image within the canvas
+    const scaleWidth = canvas.width / baseImage.width;
+    const scaleHeight = canvas.height / baseImage.height;
+    const scale = Math.min(scaleWidth, scaleHeight);
+
+    // Apply the scale factor to the image size
     baseImage.width *= scale;
     baseImage.height *= scale;
-}
 
-// Calculate initial scale for overlay image
-function calculateOverlayScale() {
-    if (baseImage && overlayImage) {
-        overlayImageScale = 0.2 * (baseImage.width / overlayImage.width);
-        resizeControl.value = overlayImageScale * 100;
-    }
+    // Adjust overlay position to center it
+    overlayPosition.x = (canvas.width - baseImage.width) / 2;
+    overlayPosition.y = (canvas.height - baseImage.height) / 2;
 }
 
 // Start dragging overlay image
@@ -187,7 +188,7 @@ function setCanvasDimensions() {
     }
 
     if (baseImage) {
-        scaleBaseImageToFitCanvas();
+        scaleBaseImageToFitCanvas(); // Re-scale the image when canvas size changes
         calculateOverlayScale();
         drawImages();
     }
