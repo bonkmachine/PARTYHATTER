@@ -58,7 +58,7 @@ label {
     margin-top: auto; /* Push the links to the bottom */
     display: flex;
     justify-content: space-around; /* Adjust this as needed */
-    align-items: center;
+    align-items: stretch;
     padding-top: 20px; /* Add some space between the content and links */
 }
 
