@@ -17,6 +17,26 @@ let overlayPosition = { x: 50, y: 50 };
 let isDragging = false;
 let dragStartX, dragStartY;
 
+// Save image button for mobile
+const saveImageBtn = document.createElement('button');
+saveImageBtn.textContent = 'Save Image';
+saveImageBtn.addEventListener('click', function () {
+    saveEditedImage();
+});
+document.querySelector('.control-panel').appendChild(saveImageBtn);
+
+// Function to save edited image
+function saveEditedImage() {
+    const dataURL = canvas.toDataURL('image/png');
+    const downloadLink = document.createElement('a');
+    downloadLink.href = dataURL;
+    downloadLink.download = 'edited_image.png';
+    downloadLink.style.display = 'none';
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+}
+
 // Overlay image URL
 const overlayImageUrl = 'https://i.ibb.co/zrTcXKZ/blue-phat.png';
 
