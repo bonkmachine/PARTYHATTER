@@ -1,25 +1,16 @@
-/* Reset styles for consistent rendering across browsers */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    margin: 0;
     background-color: #f4f4f4;
 }
 
 .wrapper {
-    width: 90%; /* Adjust the width as needed */
-    max-width: 1200px; /* Maximum width of the wrapper */
-    height: 100vh; /* Full viewport height */
+    margin: 20px; /* Added margin around the entire wrapper */
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
     background-color: #eaeaea;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -27,63 +18,60 @@ body {
 }
 
 .control-panel {
-    padding: 20px;
+    margin-right: 10px; /* Added margin around the control panel */
     background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    border-radius: 8px 0 0 8px;
 }
 
 .canvas-container {
-    flex-grow: 1; /* Canvas container takes up remaining space */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-left: 10px; /* Added margin around the canvas container */
+    flex-grow: 1;
     background-color: #fff;
-}
-
-canvas {
-    max-width: 100%; /* Ensures canvas doesn't exceed its container width */
-    max-height: 100%; /* Ensures canvas doesn't exceed its container height */
-    border: 1px solid #ccc; /* Optional border for visibility */
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
 }
 
 button {
-    padding: 10px 15px;
-    margin-top: 10px;
-    margin-right: 5px; /* Space between buttons */
+    margin-top: 15px;
+    padding: 8px 12px;
     border: none;
     background-color: #007bff;
     color: white;
-    font-weight: bold;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-label, input {
+label {
     display: block;
-    margin-top: 10px;
+    margin-top: 15px;
+    font-weight: bold;
 }
 
-input[type="file"] {
-    border: 1px solid #ccc;
-    padding: 5px;
-}
-
-input[type="range"] {
-    width: 100%;
-}
-
-/* Add media query for smaller screens if needed */
+/* Responsive styles */
 @media (max-width: 768px) {
     .wrapper {
-        flex-direction: column;
+        flex-direction: column; /* Stack the boxes vertically */
     }
 
     .control-panel, .canvas-container {
-        width: 100%; /* Full width on smaller screens */
+        margin-right: 0;
+        margin-left: 0;
+        border-radius: 8px; /* Adjust border-radius for stacked layout */
+    }
+
+    .control-panel {
+        border-bottom: 1px solid #ddd; /* Border at the bottom of control panel */
+        border-right: none;
+    }
+
+    .canvas-container {
+        margin-top: 10px; /* Space between control panel and canvas on small screens */
     }
 }
