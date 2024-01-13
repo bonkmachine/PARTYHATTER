@@ -20,8 +20,10 @@ let dragStartX, dragStartY;
 // Overlay image URL
 const overlayImageUrl = 'https://i.ibb.co/zrTcXKZ/blue-phat.png';
 
-// Set initial canvas dimensions and add resize event listener
+// Add an initial call to setCanvasDimensions to ensure canvas dimensions are set correctly on page load
 setCanvasDimensions();
+
+// Add an event listener to update canvas dimensions when the window is resized
 window.addEventListener('resize', setCanvasDimensions);
 
 // Load base image when a file is selected
@@ -237,14 +239,21 @@ function setCanvasDimensions() {
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
-    if (viewportWidth < maxWidth) {
-        canvas.width = viewportWidth;
-        canvas.height = viewportWidth / aspectRatio;
+    // Calculate canvas dimensions based on screen size and aspect ratio
+    if (viewportWidth < maxWidth || viewportHeight < maxHeight) {
+        if (viewportWidth / viewportHeight > aspectRatio) {
+            canvas.width = viewportHeight * aspectRatio;
+            canvas.height = viewportHeight;
+        } else {
+            canvas.width = viewportWidth;
+            canvas.height = viewportWidth / aspectRatio;
+        }
     } else {
         canvas.width = maxWidth;
         canvas.height = maxHeight;
     }
 
+    // Redraw images when canvas dimensions change
     if (baseImage) {
         scaleBaseImageToFitCanvas();
         calculateOverlayScale();
