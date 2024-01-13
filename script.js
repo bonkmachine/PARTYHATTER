@@ -53,6 +53,11 @@ canvas.addEventListener('mousedown', startDragging);
 canvas.addEventListener('mousemove', dragImage);
 canvas.addEventListener('mouseup', stopDragging);
 
+// Touch interactions for dragging
+canvas.addEventListener('touchstart', startDragging);
+canvas.addEventListener('touchmove', dragImage);
+canvas.addEventListener('touchend', stopDragging);
+
 // Load image and display it on the canvas
 function loadImage(file, isBase) {
     const reader = new FileReader();
@@ -101,8 +106,18 @@ function calculateOverlayScale() {
 // Start dragging overlay image
 function startDragging(e) {
     const rect = canvas.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
+    let clientX, clientY;
+
+    if (e.type === 'mousedown') {
+        clientX = e.clientX;
+        clientY = e.clientY;
+    } else if (e.type === 'touchstart') {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+    }
+
+    const mouseX = clientX - rect.left;
+    const mouseY = clientY - rect.top;
 
     if (mouseX >= overlayPosition.x && mouseX <= overlayPosition.x + overlayImage.width * overlayImageScale &&
         mouseY >= overlayPosition.y && mouseY <= overlayPosition.y + overlayImage.height * overlayImageScale) {
@@ -116,8 +131,18 @@ function startDragging(e) {
 function dragImage(e) {
     if (isDragging) {
         const rect = canvas.getBoundingClientRect();
-        overlayPosition.x = e.clientX - rect.left - dragStartX;
-        overlayPosition.y = e.clientY - rect.top - dragStartY;
+        let clientX, clientY;
+
+        if (e.type === 'mousemove') {
+            clientX = e.clientX;
+            clientY = e.clientY;
+        } else if (e.type === 'touchmove') {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+        }
+
+        overlayPosition.x = clientX - rect.left - dragStartX;
+        overlayPosition.y = clientY - rect.top - dragStartY;
         drawImages();
     }
 }
