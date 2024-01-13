@@ -5,12 +5,8 @@ const resizeControl = document.getElementById('resizeControl');
 const rotateControl = document.getElementById('rotateControl');
 const canvas = document.getElementById('imageCanvas');
 const ctx = canvas.getContext('2d');
-const downloadBtn = document.getElementById('downloadBtn'); // Reference to the Download Image button
+const downloadBtn = document.getElementById('downloadBtn');
 const resetBtn = document.getElementById('resetBtn');
-
-// Set canvas dimensions
-canvas.width = 500; // Set canvas width
-canvas.height = 500; // Set canvas height
 
 // Initialize variables
 let baseImage = null;
@@ -23,6 +19,10 @@ let dragStartX, dragStartY;
 
 // Overlay image URL
 const overlayImageUrl = 'https://i.ibb.co/zrTcXKZ/blue-phat.png';
+
+// Set initial canvas dimensions and add resize event listener
+setCanvasDimensions();
+window.addEventListener('resize', setCanvasDimensions);
 
 // Load base image when a file is selected
 baseImageUpload.addEventListener('change', function(e) {
@@ -37,7 +37,7 @@ addOverlayBtn.addEventListener('click', function() {
 // Handle resizing of the overlay image
 resizeControl.addEventListener('input', function() {
     if (baseImage && overlayImage) {
-        overlayImageScale = (resizeControl.value / 100) * (baseImage.width / overlayImage.width);
+        overlayImageScale = resizeControl.value / 100;
         drawImages();
     }
 });
@@ -48,12 +48,12 @@ rotateControl.addEventListener('input', function() {
     drawImages();
 });
 
-// Handle mouse interactions for dragging
+// Mouse interactions for dragging
 canvas.addEventListener('mousedown', startDragging);
 canvas.addEventListener('mousemove', dragImage);
 canvas.addEventListener('mouseup', stopDragging);
 
-// Load an image and display it on the canvas
+// Load image and display it on the canvas
 function loadImage(file, isBase) {
     const reader = new FileReader();
     reader.onload = function(event) {
@@ -62,7 +62,6 @@ function loadImage(file, isBase) {
             if (isBase) {
                 baseImage = img;
                 scaleBaseImageToFitCanvas();
-                calculateOverlayScale();
                 drawImages();
             }
         }
@@ -71,35 +70,35 @@ function loadImage(file, isBase) {
     reader.readAsDataURL(file);
 }
 
-// Load the overlay image and display it on the canvas
+// Load overlay image and display it on the canvas
 function loadOverlayImage(url) {
     const img = new Image();
-    img.crossOrigin = "Anonymous"; // Important for images from other domains
+    img.crossOrigin = "Anonymous";
     img.onload = function() {
         overlayImage = img;
         calculateOverlayScale();
-        overlayPosition = { x: 50, y: 50 }; // Reset position when a new image is added
+        overlayPosition = { x: 50, y: 50 };
         drawImages();
     }
     img.src = url;
 }
 
-// Scale the base image to fit the canvas while maintaining aspect ratio
+// Scale base image to fit the canvas while maintaining aspect ratio
 function scaleBaseImageToFitCanvas() {
     let scale = Math.min(canvas.width / baseImage.width, canvas.height / baseImage.height);
     baseImage.width *= scale;
     baseImage.height *= scale;
 }
 
-// Calculate the initial scale for the overlay image
+// Calculate initial scale for overlay image
 function calculateOverlayScale() {
     if (baseImage && overlayImage) {
-        overlayImageScale = 0.2 * (baseImage.width / overlayImage.width); // 20% of base image's width
-        resizeControl.value = 20; // Set to 20% in the range input
+        overlayImageScale = 0.2 * (baseImage.width / overlayImage.width);
+        resizeControl.value = overlayImageScale * 100;
     }
 }
 
-// Handle starting to drag the overlay image
+// Start dragging overlay image
 function startDragging(e) {
     const rect = canvas.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
@@ -113,7 +112,7 @@ function startDragging(e) {
     }
 }
 
-// Handle dragging the overlay image
+// Drag overlay image
 function dragImage(e) {
     if (isDragging) {
         const rect = canvas.getBoundingClientRect();
@@ -123,17 +122,16 @@ function dragImage(e) {
     }
 }
 
-// Handle stopping the drag of the overlay image
+// Stop dragging overlay image
 function stopDragging() {
     isDragging = false;
 }
 
-// Draw both the base image and overlay image on the canvas
+// Draw base and overlay images on the canvas
 function drawImages() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     if (baseImage) {
-        // Draw the base image centered in the canvas
         ctx.drawImage(baseImage, (canvas.width - baseImage.width) / 2, (canvas.height - baseImage.height) / 2, baseImage.width, baseImage.height);
     }
 
@@ -146,39 +144,52 @@ function drawImages() {
     }
 }
 
+// Reset button functionality
 resetBtn.addEventListener('click', function() {
-    // Clear the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Reset variables and overlay
     baseImage = null;
     overlayImage = null;
-    overlayImageScale = 0.2; // Initial scale (20%)
+    overlayImageScale = 0.2;
     overlayRotation = 0;
     overlayPosition = { x: 50, y: 50 };
     isDragging = false;
     dragStartX = 0;
     dragStartY = 0;
-
-    // Reset input controls
     baseImageUpload.value = '';
     resizeControl.value = 20;
     rotateControl.value = 0;
-
-    // Redraw (clear) the canvas
     drawImages();
 });
 
-// Handle downloading the edited image when the "Download Image" button is clicked
+// Download button functionality
 downloadBtn.addEventListener('click', function() {
-    // Create a data URL from the canvas content
-    const dataURL = canvas.toDataURL('image/png'); // You can specify the desired image format
-
-    // Create a temporary anchor element for downloading
+    const dataURL = canvas.toDataURL('image/png');
     const downloadLink = document.createElement('a');
     downloadLink.href = dataURL;
-    downloadLink.download = 'phatted_image.jpg'; // Specify the desired file name and extension
-
-    // Trigger a click event on the anchor element to start the download
+    downloadLink.download = 'edited_image.png';
     downloadLink.click();
 });
+
+// Function to set canvas dimensions dynamically
+function setCanvasDimensions() {
+    const maxWidth = 500;
+    const maxHeight = 500;
+    const aspectRatio = maxWidth / maxHeight;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    if (viewportWidth < maxWidth) {
+        canvas.width = viewportWidth;
+        canvas.height = viewportWidth / aspectRatio;
+    } else {
+        canvas.width = maxWidth;
+        canvas.height = maxHeight;
+    }
+
+    if (baseImage) {
+        scaleBaseImageToFitCanvas();
+        calculateOverlayScale();
+        drawImages();
+    }
+}
+
