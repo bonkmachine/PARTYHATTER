@@ -233,8 +233,8 @@ downloadBtn.addEventListener('click', function() {
 
 // Function to set canvas dimensions dynamically
 function setCanvasDimensions() {
-    const maxWidth = 500;
-    const maxHeight = 500;
+    const maxWidth = 600;
+    const maxHeight = 600;
     const aspectRatio = maxWidth / maxHeight;
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
