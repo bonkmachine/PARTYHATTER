@@ -71,13 +71,35 @@ function loadImage(file, isBase) {
         img.onload = function() {
             if (isBase) {
                 baseImage = img;
-                scaleBaseImageToFitCanvas();
+                scaleAndCenterBaseImage();
                 drawImages();
             }
         }
         img.src = event.target.result;
     }
     reader.readAsDataURL(file);
+}
+
+// Scale and center base image to fit the canvas while maintaining aspect ratio
+function scaleAndCenterBaseImage() {
+    const canvasAspectRatio = canvas.width / canvas.height;
+    const imageAspectRatio = baseImage.width / baseImage.height;
+    let scale;
+
+    if (canvasAspectRatio > imageAspectRatio) {
+        scale = canvas.height / baseImage.height;
+        baseImage.width *= scale;
+        baseImage.height *= scale;
+    } else {
+        scale = canvas.width / baseImage.width;
+        baseImage.width *= scale;
+        baseImage.height *= scale;
+    }
+
+    // Center the image on the canvas
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    overlayPosition = { x: centerX - baseImage.width / 2, y: centerY - baseImage.height / 2 };
 }
 
 // Load overlay image and display it on the canvas
