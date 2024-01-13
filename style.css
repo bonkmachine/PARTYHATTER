@@ -8,6 +8,14 @@ body {
     background-color: #111111;
 }
 
+    #resizeControl {
+        width: 100%;
+    }
+
+    #rotateControl {
+        width: 100%;
+    }
+    
 .wrapper {
     margin: 20px; /* Added margin around the entire wrapper */
     display: flex;
@@ -73,14 +81,6 @@ label {
 @media (max-width: 768px) {
     .wrapper {
         flex-direction: column; /* Stack the boxes vertically */
-    }
-    
-    #resizeControl {
-        width: 100%;
-    }
-
-    #rotateControl {
-        width: 100%;
     }
     
     .control-panel, .canvas-container {
