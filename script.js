@@ -58,6 +58,11 @@ canvas.addEventListener('touchstart', startDragging);
 canvas.addEventListener('touchmove', dragImage);
 canvas.addEventListener('touchend', stopDragging);
 
+// Function to handle touchmove on the entire document
+function preventDocumentScroll(e) {
+    e.preventDefault();
+}
+
 // Load image and display it on the canvas
 function loadImage(file, isBase) {
     const reader = new FileReader();
@@ -124,6 +129,9 @@ function startDragging(e) {
         isDragging = true;
         dragStartX = mouseX - overlayPosition.x;
         dragStartY = mouseY - overlayPosition.y;
+
+        // Prevent document scrolling during dragging on mobile
+        document.addEventListener('touchmove', preventDocumentScroll, { passive: false });
     }
 }
 
@@ -150,7 +158,11 @@ function dragImage(e) {
 // Stop dragging overlay image
 function stopDragging() {
     isDragging = false;
+
+    // Remove the event listener to allow document scrolling again
+    document.removeEventListener('touchmove', preventDocumentScroll);
 }
+
 
 // Draw base and overlay images on the canvas
 function drawImages() {
