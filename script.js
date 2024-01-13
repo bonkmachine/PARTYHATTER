@@ -61,7 +61,7 @@ function loadImage(file, isBase) {
         img.onload = function() {
             if (isBase) {
                 baseImage = img;
-                scaleBaseImageToFitCanvas(); // Adjust the size of the image to fit the canvas
+                scaleBaseImageToFitCanvas();
                 drawImages();
             }
         }
@@ -85,18 +85,17 @@ function loadOverlayImage(url) {
 
 // Scale base image to fit the canvas while maintaining aspect ratio
 function scaleBaseImageToFitCanvas() {
-    // Calculate the scale factor to fit the image within the canvas
-    const scaleWidth = canvas.width / baseImage.width;
-    const scaleHeight = canvas.height / baseImage.height;
-    const scale = Math.min(scaleWidth, scaleHeight);
-
-    // Apply the scale factor to the image size
+    let scale = Math.min(canvas.width / baseImage.width, canvas.height / baseImage.height);
     baseImage.width *= scale;
     baseImage.height *= scale;
+}
 
-    // Adjust overlay position to center it
-    overlayPosition.x = (canvas.width - baseImage.width) / 2;
-    overlayPosition.y = (canvas.height - baseImage.height) / 2;
+// Calculate initial scale for overlay image
+function calculateOverlayScale() {
+    if (baseImage && overlayImage) {
+        overlayImageScale = 0.2 * (baseImage.width / overlayImage.width);
+        resizeControl.value = overlayImageScale * 100;
+    }
 }
 
 // Start dragging overlay image
@@ -133,7 +132,7 @@ function drawImages() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     if (baseImage) {
-        ctx.drawImage(baseImage, (canvas.width - baseImage.width) / 2, (canvas.height - baseImage.height) / 2, baseImage.width, baseImage.height);
+                ctx.drawImage(baseImage, (canvas.width - baseImage.width) / 2, (canvas.height - baseImage.height) / 2, baseImage.width, baseImage.height);
     }
 
     if (overlayImage) {
@@ -188,7 +187,7 @@ function setCanvasDimensions() {
     }
 
     if (baseImage) {
-        scaleBaseImageToFitCanvas(); // Re-scale the image when canvas size changes
+        scaleBaseImageToFitCanvas();
         calculateOverlayScale();
         drawImages();
     }
