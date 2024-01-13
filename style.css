@@ -53,3 +53,25 @@ label {
     margin-top: 15px;
     font-weight: bold;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column; /* Stack the boxes vertically */
+    }
+
+    .control-panel, .canvas-container {
+        margin-right: 0;
+        margin-left: 0;
+        border-radius: 8px; /* Adjust border-radius for stacked layout */
+    }
+
+    .control-panel {
+        border-bottom: 1px solid #ddd; /* Border at the bottom of control panel */
+        border-right: none;
+    }
+
+    .canvas-container {
+        margin-top: 10px; /* Space between control panel and canvas on small screens */
+    }
+}
