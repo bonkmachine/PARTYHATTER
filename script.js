@@ -233,24 +233,35 @@ downloadBtn.addEventListener('click', function() {
 
 // Function to set canvas dimensions dynamically
 function setCanvasDimensions() {
-    const maxWidth = 300;
-    const maxHeight = 300;
-    const aspectRatio = maxWidth / maxHeight;
+    const maxWidthMobile = 300; // Maximum width for mobile
+
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
-    // Calculate canvas dimensions based on screen size and aspect ratio
-    if (viewportWidth < maxWidth || viewportHeight < maxHeight) {
-        if (viewportWidth / viewportHeight > aspectRatio) {
-            canvas.width = viewportHeight * aspectRatio;
-            canvas.height = viewportHeight;
-        } else {
-            canvas.width = viewportWidth;
-            canvas.height = viewportWidth / aspectRatio;
-        }
+    // Check if it's a mobile device (you can adjust this condition as needed)
+    const isMobile = viewportWidth <= 768; // Adjust the breakpoint if necessary
+
+    if (isMobile) {
+        canvas.width = maxWidthMobile;
+        canvas.height = maxWidthMobile; // Set the canvas width and height to 300px for mobile
     } else {
-        canvas.width = maxWidth;
-        canvas.height = maxHeight;
+        const maxWidth = 600;
+        const maxHeight = 600;
+        const aspectRatio = maxWidth / maxHeight;
+
+        // Calculate canvas dimensions based on screen size and aspect ratio
+        if (viewportWidth < maxWidth || viewportHeight < maxHeight) {
+            if (viewportWidth / viewportHeight > aspectRatio) {
+                canvas.width = viewportHeight * aspectRatio;
+                canvas.height = viewportHeight;
+            } else {
+                canvas.width = viewportWidth;
+                canvas.height = viewportWidth / aspectRatio;
+            }
+        } else {
+            canvas.width = maxWidth;
+            canvas.height = maxHeight;
+        }
     }
 
     // Redraw images when canvas dimensions change
