@@ -53,6 +53,21 @@ label {
     margin-top: 15px;
     font-weight: bold;
 }
+/* CSS for social links */
+.social-links {
+    margin-top: auto; /* Push the links to the bottom */
+    display: flex;
+    justify-content: space-around; /* Adjust this as needed */
+    align-items: center;
+    padding-top: 20px; /* Add some space between the content and links */
+}
+
+/* Additional styling for social links (optional) */
+.social-links a {
+    text-decoration: none;
+    color: #007bff; /* Change the link color as needed */
+}
+
 
 /* Responsive styles */
 @media (max-width: 768px) {
