@@ -11,7 +11,7 @@ body {
 .wrapper {
     background-image: url('https://i.ibb.co/hc4jn8T/Inventory-tab.webp');
     background-repeat: no-repeat;
-    background-size: cover; /* Stretch the image to cover the entire wrapper */
+    background-size: fill; /* Stretch the image to cover the entire wrapper */
     margin: 20px;
     display: flex;
     background-color: #111111;
