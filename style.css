@@ -12,7 +12,7 @@ body {
 .wrapper {
     background-image: url('https://i.ibb.co/bgv34mq/paper.jpg');
     background-repeat: no-repeat;
-    background-size: cover; /* Stretch the image to cover the entire wrapper */
+    background-size: cover;
     margin: 20px;
     display: flex;
     background-color: #111111;
@@ -22,10 +22,10 @@ body {
 
 .control-panel {
     padding: 32px;
-    background-image: url('https://i.ibb.co/MMT8B5C/Inventory-tab.png'); /* Specify the background image URL here */
+    background-image: url('https://i.ibb.co/MMT8B5C/Inventory-tab.png');
     background-repeat: no-repeat;
-    background-size: 100% 100%; /* Stretch the image to cover the entire control panel */
-    background-position: center; /* Center the background image */
+    background-size: 100% 100%;
+    background-position: center;
 }
 
 .canvas-container {
@@ -56,10 +56,9 @@ label {
 }
 
 input[type="file"] {
-    margin-top: 8px; /* Add margin to create space above the input element */
+    margin-top: 8px;
 }
 
-/* Remove the blue color during sliding */
 input[type="range"] {
     margin-top: 10px;
     -webkit-appearance: none;
@@ -83,7 +82,6 @@ input[type="range"]::-webkit-slider-thumb {
     transition: background 0.2s;
 }
 
-/* Style the slider thumb when hovered */
 input[type="range"]::-webkit-slider-thumb:hover {
     background: #340f0e;
 }
@@ -92,30 +90,27 @@ input[type="range"]:focus {
     opacity: 1;
 }
 
-/* Responsive styles for mobile */
 @media (max-width: 768px) {
     .wrapper {
         flex-direction: column;
-        width: 100%; /* Cover the whole screen from left to right */
-        padding: 0 0%; /* Add 1% padding to each side */
+        width: 100%;
+        padding: 0;
     }
 
-        .canvas-container {
+    .canvas-container {
         width: 100%;
         padding: 16px;
         margin-right: 0;
         margin-left: 0;
+        margin-top: 10px;
     }
 
     .control-panel {
         padding: 24px;
     }
 
-    .canvas-container {
-        margin-top: 10px;
-    }
     input[type="range"]::-webkit-slider-thumb {
-    width: 18px;
-    height: 18px;
+        width: 18px;
+        height: 18px;
     }
 }
