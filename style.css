@@ -5,58 +5,48 @@ body {
     align-items: center;
     height: auto;
     margin: 0;
-    background-color: #111111;
+    background-color: #ffffff;
 }
 
-    #resizeControl {
-        width: 100%;
-    }
-
-    #rotateControl {
-        width: 100%;
-    }
-    
 .wrapper {
-    background-image: url('https://i.ibb.co/bgv34mq/paper.jpg'); /* Replace 'your-texture-image.jpg' with your image file path */
-    background-repeat: repeat; /* You can adjust this property based on your texture image */
-    margin: 20px; /* Added margin around the entire wrapper */
+    background-image: url('https://i.ibb.co/bgv34mq/paper.jpg');
+    background-repeat: repeat;
+    margin: 20px;
     display: flex;
     background-color: #111111;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
+    border: 6px solid #2c2c2c; /* Add a thick border with a color of your choice */
 }
 
 .control-panel {
-    
-    margin-right: 10px; /* Added margin around the control panel */
-    background-color: none;
-    padding: 20px;
-    border-right: 1px solid #ddd;
+    padding: 32px;
+    background: none;
+    border-right: 6px solid #2c2c2c;
     border-radius: 8px 0 0 8px;
 }
 
 .canvas-container {
-    margin-left: 10px; /* Added margin around the canvas container */
     flex-grow: 1;
-    background-color: none;
-    padding: 20px;
+    padding: 32px;
     border-radius: 0 8px 8px 0;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    background: none;
 }
 
 button {
     margin-top: 15px;
     padding: 8px 12px;
     border: none;
-    background-color: #007bff;
+    background-color: #681e1d;
     color: white;
     border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #1b0707;
 }
 
 label {
@@ -64,19 +54,13 @@ label {
     margin-top: 15px;
     font-weight: bold;
 }
-/* CSS for social links */
-.social-links {
-    margin-top: auto; /* Push the links to the bottom */
-    display: flex;
-    justify-content: space-around; /* Adjust this as needed */
-    align-items: stretch;
-    padding-top: 20px; /* Add some space between the content and links */
-}
 
-/* Additional styling for social links (optional) */
-.social-links a {
-    text-decoration: none;
-    color: #007bff; /* Change the link color as needed */
+.social-links {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    padding-top: 20px;
 }
 
 /* Remove the blue color during sliding */
@@ -85,42 +69,52 @@ input[type="range"] {
     appearance: none;
     width: 100%;
     height: 6px;
-    background: #ddd;
+    background: #afaf9a;
     border-radius: 3px;
     outline: none;
     opacity: 0.7;
     transition: opacity 0.2s;
 }
 
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #681e1d;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s;
+}
 
+/* Style the slider thumb when hovered */
 input[type="range"]::-webkit-slider-thumb:hover {
-    background: transparent; /* Keep the thumb background transparent on hover */
+    background: #340f0e;
 }
 
 input[type="range"]:focus {
     opacity: 1;
 }
 
-
 /* Responsive styles for mobile */
 @media (max-width: 768px) {
     .wrapper {
-        flex-direction: column; /* Stack the boxes vertically */
+        flex-direction: column;
     }
-    
+
     .control-panel, .canvas-container {
         margin-right: 0;
         margin-left: 0;
-        border-radius: 8px; /* Adjust border-radius for stacked layout */
+        border-radius: 8px;
     }
 
     .control-panel {
-        border-bottom: 1px solid #ddd; /* Border at the bottom of control panel */
+        border-bottom: 1px solid #ddd;
         border-right: none;
-        padding-top: 1rem; /* Add 3rem of padding to the top */
+        padding-top: 1rem;
     }
 
     .canvas-container {
-        margin-top: 10px; /* Space between control panel and canvas on small screens */
+        margin-top: 10px;
     }
 }
