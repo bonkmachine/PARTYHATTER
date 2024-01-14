@@ -18,7 +18,7 @@ let isDragging = false;
 let dragStartX, dragStartY;
 
 // Overlay image URL
-const overlayImageUrl = 'https://i.ibb.co/WfzsXSH/partyhatforweb.png';
+const overlayImageUrl = 'https://i.ibb.co/NFMp0jq/partyhatforweb.png';
 
 // Add an initial call to setCanvasDimensions to ensure canvas dimensions are set correctly on page load
 setCanvasDimensions();
