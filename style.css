@@ -8,19 +8,10 @@ body {
     background-color: #4a4139;
 }
 
-.control-panel {
-    background-image: url('https://i.ibb.co/MsgBFY1/Inventory-tab.jpg')
-    background-repeat: repeat;
-    z-index: 2;
-    padding: 32px;
-    border-right: 6px solid #2c2c2c;
-}
-
 .wrapper {
     background-image: url('https://i.ibb.co/bgv34mq/paper.jpg');
     background-repeat: no-repeat;
     background-size: cover; /* Stretch the image to cover the entire wrapper */
-    z-index: 1;
     margin: 20px;
     display: flex;
     background-color: #111111;
@@ -28,6 +19,15 @@ body {
     border-radius: 8px;
     overflow: hidden;
     border: 6px solid #2c2c2c;
+}
+
+.control-panel {
+    padding: 32px;
+    border-right: 6px solid #2c2c2c;
+    background-image: url('https://i.ibb.co/MsgBFY1/Inventory-tab.jpg'); /* Specify the background image URL here */
+    background-repeat: no-repeat;
+    background-size: cover; /* Stretch the image to cover the entire control panel */
+    background-position: center; /* Center the background image */
 }
 
 .canvas-container {
