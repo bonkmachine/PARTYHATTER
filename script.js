@@ -235,7 +235,7 @@ downloadBtn.addEventListener('click', function () {
     const dataURL = canvas.toDataURL('image/png');
     const downloadLink = document.createElement('a');
     downloadLink.href = dataURL;
-    downloadLink.download = 'edited_image.png';
+    downloadLink.download = 'phatted_image.png';
     downloadLink.click();
 });
 
