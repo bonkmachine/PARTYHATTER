@@ -12,13 +12,13 @@ const resetBtn = document.getElementById('resetBtn');
 let baseImage = null;
 let overlayImage = null;
 let overlayImageScale = 0.2; // Initial scale (20%)
-let overlayRotation = 0;
+let overlayRotation = 180;
 let overlayPosition = { x: 50, y: 50 };
 let isDragging = false;
 let dragStartX, dragStartY;
 
 // Overlay image URL
-const overlayImageUrl = 'https://i.ibb.co/zrTcXKZ/blue-phat.png';
+const overlayImageUrl = 'https://i.ibb.co/WfzsXSH/partyhatforweb.png';
 
 // Add an initial call to setCanvasDimensions to ensure canvas dimensions are set correctly on page load
 setCanvasDimensions();
@@ -271,4 +271,3 @@ function setCanvasDimensions() {
         drawImages();
     }
 }
-
