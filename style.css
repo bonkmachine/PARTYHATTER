@@ -13,6 +13,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover; /* Adjust background-size as needed */
     background-position: center; /* Adjust background-position as needed */
+    z-index: 2;
     padding: 32px;
     border-right: 6px solid #2c2c2c;
 }
