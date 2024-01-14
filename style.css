@@ -53,16 +53,9 @@ label {
     font-weight: bold;
 }
 
-#resizeControl {
-    padding-top: 8px
-}
-
-#rotateControl {
-    padding-top: 8px
-}
-
 /* Remove the blue color during sliding */
 input[type="range"] {
+    margin-top: 8px;
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
