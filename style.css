@@ -10,9 +10,7 @@ body {
 
 .control-panel {
     background-image: url('https://i.ibb.co/MsgBFY1/Inventory-tab.jpg')
-    background-repeat: no-repeat;
-    background-size: cover; /* Adjust background-size as needed */
-    background-position: center; /* Adjust background-position as needed */
+    background-repeat: repeat;
     z-index: 2;
     padding: 32px;
     border-right: 6px solid #2c2c2c;
