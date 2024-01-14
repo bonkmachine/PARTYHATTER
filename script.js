@@ -251,8 +251,8 @@ function setCanvasDimensions() {
     const isMobile = viewportWidth <= 768; // Adjust the breakpoint if necessary
 
     if (isMobile) {
-        canvas.width = Math.floor(viewportWidth * 0.98); // Cover the whole screen and add 1% padding to each side
-        canvas.height = Math.floor(maxWidthMobile * (viewportHeight / viewportWidth));
+        canvas.width = maxWidthMobile;
+        canvas.height = maxWidthMobile; // Set the canvas width and height to 300px for mobile
     } else {
         const maxWidth = 600;
         const maxHeight = 600;
@@ -280,4 +280,3 @@ function setCanvasDimensions() {
         drawImages();
     }
 }
-
