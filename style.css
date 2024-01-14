@@ -91,14 +91,3 @@ input[type="range"]:focus {
     .wrapper {
         flex-direction: column;
     }
-
-    .control-panel, .canvas-container {
-        margin-right: 0;
-        margin-left: 0;
-        border-radius: 8px;
-    }
-
-    .canvas-container {
-        margin-top: 10px;
-    }
-}
