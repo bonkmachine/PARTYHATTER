@@ -1,16 +1,11 @@
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'runescape_uf', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: auto;
     margin: 0;
     background-color: #ffffff;
-}
-
-@font-face {
-    font-family: 'runescape_uf';
-    src: url('https://raw.githubusercontent.com//bonkmachine/PARTYHATTER/blob/main/runescape_uf.ttf') format('truetype');
 }
 
 .wrapper {
