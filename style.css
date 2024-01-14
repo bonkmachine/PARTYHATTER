@@ -54,6 +54,10 @@ label {
     font-weight: bold;
 }
 
+input[type="file"] {
+    margin-top: 8px; /* Add margin to create space above the input element */
+}
+
 /* Remove the blue color during sliding */
 input[type="range"] {
     margin-top: 10px;
