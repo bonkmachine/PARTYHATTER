@@ -96,6 +96,7 @@ input[type="range"]:focus {
 @media (max-width: 768px) {
     .wrapper {
         flex-direction: column;
+        margin: 1%;
     }
 
         .canvas-container {
