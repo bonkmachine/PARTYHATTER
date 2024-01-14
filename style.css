@@ -11,15 +11,16 @@ body {
 .wrapper {
     background-image: url('https://i.ibb.co/hc4jn8T/Inventory-tab.webp');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; /* Stretch the image to cover the entire wrapper */
     margin: 20px;
     display: flex;
     background-color: #111111;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
-    border: 6px solid #2c2c2c; /* Add a thick border with a color of your choice */
+    border: 6px solid #2c2c2c;
 }
+
 
 .control-panel {
     padding: 32px;
