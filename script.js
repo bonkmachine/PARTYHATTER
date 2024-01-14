@@ -36,10 +36,19 @@ addOverlayBtn.addEventListener('click', function() {
     loadOverlayImage(overlayImageUrl);
 });
 
-// Handle resizing of the overlay image
-resizeControl.addEventListener('input', function() {
+// Handle resizing of the overlay image from the center
+resizeControl.addEventListener('input', function () {
     if (baseImage && overlayImage) {
-        overlayImageScale = resizeControl.value / 100;
+        const newScale = resizeControl.value / 100;
+        const centerX = overlayPosition.x + (overlayImage.width * overlayImageScale) / 2;
+        const centerY = overlayPosition.y + (overlayImage.height * overlayImageScale) / 2;
+        
+        overlayImageScale = newScale;
+
+        // Calculate the new position to keep the center of the overlay image fixed
+        overlayPosition.x = centerX - (overlayImage.width * overlayImageScale) / 2;
+        overlayPosition.y = centerY - (overlayImage.height * overlayImageScale) / 2;
+
         drawImages();
     }
 });
