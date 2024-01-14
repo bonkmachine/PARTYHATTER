@@ -98,14 +98,14 @@ input[type="range"]:focus {
         flex-direction: column;
     }
 
-    .control-panel, .canvas-container {
+        .canvas-container {
         padding: 16px;
         margin-right: 0;
         margin-left: 0;
     }
 
     .control-panel {
-        padding: 16px;
+        padding: 24px;
     }
 
     .canvas-container {
