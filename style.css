@@ -8,6 +8,15 @@ body {
     background-color: #4a4139;
 }
 
+.control-panel {
+    background-image: url('https://i.ibb.co/MsgBFY1/Inventory-tab.jpg')
+    background-repeat: no-repeat;
+    background-size: cover; /* Adjust background-size as needed */
+    background-position: center; /* Adjust background-position as needed */
+    padding: 32px;
+    border-right: 6px solid #2c2c2c;
+}
+
 .wrapper {
     background-image: url('https://i.ibb.co/bgv34mq/paper.jpg');
     background-repeat: no-repeat;
@@ -19,15 +28,6 @@ body {
     border-radius: 8px;
     overflow: hidden;
     border: 6px solid #2c2c2c;
-}
-
-.control-panel {
-    background-image: url('https://i.ibb.co/MsgBFY1/Inventory-tab.jpg')
-    background-repeat: no-repeat;
-    background-size: cover; /* Adjust background-size as needed */
-    background-position: center; /* Adjust background-position as needed */
-    padding: 32px;
-    border-right: 6px solid #2c2c2c;
 }
 
 .canvas-container {
