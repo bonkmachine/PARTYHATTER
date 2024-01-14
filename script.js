@@ -27,12 +27,12 @@ setCanvasDimensions();
 window.addEventListener('resize', setCanvasDimensions);
 
 // Load base image when a file is selected
-baseImageUpload.addEventListener('change', function(e) {
+baseImageUpload.addEventListener('change', function (e) {
     loadImage(e.target.files[0], true);
 });
 
 // Load overlay image when "ADD PHAT" button is clicked
-addOverlayBtn.addEventListener('click', function() {
+addOverlayBtn.addEventListener('click', function () {
     loadOverlayImage(overlayImageUrl);
 });
 
@@ -42,7 +42,7 @@ resizeControl.addEventListener('input', function () {
         const newScale = resizeControl.value / 100;
         const centerX = overlayPosition.x + (overlayImage.width * overlayImageScale) / 2;
         const centerY = overlayPosition.y + (overlayImage.height * overlayImageScale) / 2;
-        
+
         overlayImageScale = newScale;
 
         // Calculate the new position to keep the center of the overlay image fixed
@@ -54,7 +54,7 @@ resizeControl.addEventListener('input', function () {
 });
 
 // Handle rotation of the overlay image
-rotateControl.addEventListener('input', function() {
+rotateControl.addEventListener('input', function () {
     overlayRotation = parseInt(rotateControl.value);
     drawImages();
 });
@@ -77,17 +77,17 @@ function preventDocumentScroll(e) {
 // Load image and display it on the canvas
 function loadImage(file, isBase) {
     const reader = new FileReader();
-    reader.onload = function(event) {
+    reader.onload = function (event) {
         const img = new Image();
-        img.onload = function() {
+        img.onload = function () {
             if (isBase) {
                 baseImage = img;
                 scaleAndCenterBaseImage();
                 drawImages();
             }
-        }
+        };
         img.src = event.target.result;
-    }
+    };
     reader.readAsDataURL(file);
 }
 
@@ -117,12 +117,12 @@ function scaleAndCenterBaseImage() {
 function loadOverlayImage(url) {
     const img = new Image();
     img.crossOrigin = "Anonymous";
-    img.onload = function() {
+    img.onload = function () {
         overlayImage = img;
         calculateOverlayScale();
         overlayPosition = { x: 50, y: 50 };
         drawImages();
-    }
+    };
     img.src = url;
 }
 
@@ -196,13 +196,12 @@ function stopDragging() {
     document.removeEventListener('touchmove', preventDocumentScroll);
 }
 
-
 // Draw base and overlay images on the canvas
 function drawImages() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     if (baseImage) {
-                ctx.drawImage(baseImage, (canvas.width - baseImage.width) / 2, (canvas.height - baseImage.height) / 2, baseImage.width, baseImage.height);
+        ctx.drawImage(baseImage, (canvas.width - baseImage.width) / 2, (canvas.height - baseImage.height) / 2, baseImage.width, baseImage.height);
     }
 
     if (overlayImage) {
@@ -215,7 +214,7 @@ function drawImages() {
 }
 
 // Reset button functionality
-resetBtn.addEventListener('click', function() {
+resetBtn.addEventListener('click', function () {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     baseImage = null;
     overlayImage = null;
@@ -232,7 +231,7 @@ resetBtn.addEventListener('click', function() {
 });
 
 // Download button functionality
-downloadBtn.addEventListener('click', function() {
+downloadBtn.addEventListener('click', function () {
     const dataURL = canvas.toDataURL('image/png');
     const downloadLink = document.createElement('a');
     downloadLink.href = dataURL;
