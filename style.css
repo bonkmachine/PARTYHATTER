@@ -101,6 +101,7 @@ input[type="range"]:focus {
     }
 
         .canvas-container {
+        width: 100%;
         padding: 16px;
         margin-right: 0;
         margin-left: 0;
