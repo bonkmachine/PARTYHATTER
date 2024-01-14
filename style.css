@@ -94,7 +94,7 @@ input[type="range"]:focus {
     .control-panel, .canvas-container {
         margin-right: 0;
         margin-left: 0;
-        border-radius: 8px;
+        border-radius: 0px;
     }
 
     .control-panel {
