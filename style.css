@@ -1,6 +1,6 @@
 body {
     font-family: 'Inter', sans-serif;
-    color: #ffffff;
+    color: #FFFFFF; /* Change text color to black */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,22 +10,22 @@ body {
 }
 
 .wrapper {
-    background-image: url('https://i.ibb.co/bgv34mq/paper.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     margin: 20px;
     display: flex;
-    background-color: #111111;
+    background-color: #232323;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    border-radius: 10px;
 }
 
 .control-panel {
     padding: 32px;
-    background-image: url('https://i.ibb.co/MMT8B5C/Inventory-tab.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
+    border-right: 10px solid #111111
 }
 
 .canvas-container {
@@ -39,14 +39,14 @@ button {
     margin-top: 16px;
     padding: 8px 12px;
     border: none;
-    background-color: #681e1d;
-    color: white;
+    background-color: #f9c404;
+    color: black;
     border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #1b0707;
+    background-color: #a6820c;
 }
 
 label {
@@ -65,7 +65,7 @@ input[type="range"] {
     appearance: none;
     width: 100%;
     height: 6px;
-    background: #afaf9a;
+    background: #e4e4e4;
     border-radius: 4px;
     outline: none;
     transition: opacity 0.2s;
@@ -76,7 +76,7 @@ input[type="range"]::-webkit-slider-thumb {
     appearance: none;
     width: 15px;
     height: 15px;
-    background: #681e1d;
+    background: #f3bf12;
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.2s;
